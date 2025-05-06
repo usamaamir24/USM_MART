@@ -8,7 +8,7 @@ if (!cached) {
 
 async function connectDB() {
   if (cached.conn) {
-    return cached.con;
+    return cached.conn;
   }
 
   if(!cached.promise){
@@ -16,6 +16,7 @@ async function connectDB() {
          bufferCommands:false
     }
     cached.promise=mongoose.connect(`${process.env.MONGODB_URI}/usmmart`,opts).then(mongoose=>{
+        console.log("✅ Connected to MongoDB");
         return mongoose
     })
 
